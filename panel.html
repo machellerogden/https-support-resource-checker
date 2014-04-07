@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>HTTPS Support Resource Checker</title>
+    <script src="jquery-2.1.0.min.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="knockout-latest.js"></script>
+    <script src="panel.js"></script>
+    <link rel="stylesheet" href="panel.css" />
+  </head>
+  <body>
+    <div id="main">
+        <div class="controls">
+            <button class="generate-report-button" data-bind="click: generateReport">Generate Report</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>HTTPS Support?</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: urls">
+                <tr>
+                    <td data-bind="text: url"></td>
+                    <td data-bind="text: https"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>

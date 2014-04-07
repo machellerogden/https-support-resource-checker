@@ -1,0 +1,96 @@
+body {
+    background-color: #3a4851;
+    font-family: "Lucida Sans", Arial, sans-serif;
+    padding: 5px;
+    font-size: 12px;
+}
+a {
+   color: #000;
+   text-decoration: none;
+}
+a:hover {
+   color: #7b2b84;
+   text-decoration: underline;
+}
+button {
+    font-size: 9px;
+    border: 0 none;
+    padding: 1px 5px 2px;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    background: linear-gradient(to bottom, #b96ac3 23%,#7b2b84 100%);
+    color: #fff;
+    border-radius: 5px;
+    text-shadow: 1px 1px #000;
+    box-shadow: 1px 1px 0 0 #3a0242;
+}
+button:hover {
+    background: linear-gradient(to bottom, #bb89c1 23%,#783282 100%);
+}
+button:focus {
+    outline: 0;
+    box-shadow: 0px 0px 2px 1px #e2b0e8;
+}
+div.controls {
+    text-align: center;
+    margin-bottom: 13px;
+}
+input:focus,
+a:focus {
+    outline: 0;
+    box-shadow: 0px 0px 2px 1px #dd4af0;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+    border: 0 none;
+    border-radius: 5px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 0 3px 1px #000;
+}
+th, td {
+    text-align: left;
+    padding: 4px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+th {
+    height: 26px;
+    line-height: 20px;
+    font-size: 14px;
+    background-color: #7b2b84;
+    color: #fff;
+    text-shadow: -1px -1px #000;
+}
+tbody {
+    border-top-color: #fff;
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+tr:nth-child(even) {
+    background-color: #fff;
+}
+tr:nth-child(odd) {
+    background-color: #ddd;
+}
+table tr th:nth-child(2),
+table tr td:nth-child(2) {
+    width: 15%;
+}
+table tr th:first-child {
+    border-radius: 5px 0 0 0;
+}
+table tr th:last-child {
+    border-radius: 0 5px 0 0;
+}
+table tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+}
+table tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
+}
+table td {
+    position: relative;
+}
