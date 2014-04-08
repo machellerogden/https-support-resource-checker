@@ -1,3 +1,4 @@
+// jshint evil: true
 function exportToCsv(collection, filename) {
     var output, i, line, index, downloadLink;
 
@@ -49,7 +50,6 @@ $(document).ready(function () {
     // Apply live binding
     ko.applyBindings(viewData);
 
-    var once = false;
     chrome.devtools.network.onRequestFinished.addListener(function (request) {
         var url = request.request.url;
         var urlParts = url.split('://');
