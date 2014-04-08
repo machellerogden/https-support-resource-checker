@@ -1,0 +1,1 @@
+A custom Chrome devtools panel which checks to see if an https request is possible for any given http resource loaded on the inspected window and generates both a live report and a downloadable CSV report.
