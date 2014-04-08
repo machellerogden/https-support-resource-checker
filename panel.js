@@ -57,7 +57,7 @@ $(document).ready(function () {
         if (httpsUrl) {
             chrome.devtools.inspectedWindow.eval(
                 "(function () { var success = false; $.ajax({ type: 'GET', url: '" + httpsUrl + "', async: false, success: function () { success = true; }, error: function () { success = false; } }); return success; }());",
-                function(result, isException) {
+                function (result, isException) {
                     if (!isException) {
                         viewData.urls.push({
                             url: url,
