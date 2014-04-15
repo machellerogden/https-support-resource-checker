@@ -22,10 +22,28 @@ function exportToCsv(collection, filename) {
     document.body.removeChild(downloadLink);
 }
 
+
 $(document).ready(function () {
     var ViewModel,
         viewData,
-        loc;
+        loc,
+        backgroundPort;
+
+    // Connect to background
+    backgroundPort = chrome.runtime.connect({
+        name : "devtools-page"
+    });
+
+    // listen for messages from the background
+    backgroundPort.onMessage.addListener(function (message) {
+        //console.log('message recieved: ', message);
+        if (message.action === "newresult") {
+            viewData.urls.push({
+                url: message.url,
+                https: (message.success) ? 'Y' : 'N'
+            });
+        }
+    });
 
     ViewModel = function () {
         this.urls = ko.observableArray([]);
@@ -55,17 +73,32 @@ $(document).ready(function () {
         var urlParts = url.split('://');
         var httpsUrl = (urlParts[0] === 'http') ? 'https://' + urlParts[1] : false;
         if (httpsUrl) {
-            chrome.devtools.inspectedWindow.eval(
-                "(function () { var success = false; $.ajax({ type: 'GET', url: '" + httpsUrl + "', async: false, success: function () { success = true; }, error: function () { success = false; } }); return success; }());",
-                function (result, isException) {
-                    if (!isException) {
-                        viewData.urls.push({
-                            url: url,
-                            https: (result) ? 'Y' : 'N'
-                        });
+            backgroundPort.postMessage({
+                action : "checkhttps",
+                url: httpsUrl
+            });
+
+            /*
+            if (requested.indexOf(httpsUrl) === -1) {
+                requested.push(httpsUrl);
+                $.ajax({
+                    type: 'GET',
+                    url: httpsUrl,
+                    async: false,
+                    success: function () {
+                        success = true;
+                    },
+                    error: function () {
+                        success = false;
                     }
-                }
-            );
+                });
+                viewData.urls.push({
+                    url: httpsUrl,
+                    https: (success) ? 'Y' : 'N'
+                });
+            }
+            */
+
         }
     });
 
@@ -74,6 +107,5 @@ $(document).ready(function () {
         // empty results
         viewData.urls([]);
     });
-
 
 });
