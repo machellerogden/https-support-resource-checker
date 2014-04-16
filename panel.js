@@ -77,28 +77,6 @@ $(document).ready(function () {
                 action : "checkhttps",
                 url: httpsUrl
             });
-
-            /*
-            if (requested.indexOf(httpsUrl) === -1) {
-                requested.push(httpsUrl);
-                $.ajax({
-                    type: 'GET',
-                    url: httpsUrl,
-                    async: false,
-                    success: function () {
-                        success = true;
-                    },
-                    error: function () {
-                        success = false;
-                    }
-                });
-                viewData.urls.push({
-                    url: httpsUrl,
-                    https: (success) ? 'Y' : 'N'
-                });
-            }
-            */
-
         }
     });
 
